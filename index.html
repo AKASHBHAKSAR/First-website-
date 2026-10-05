@@ -1,12 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My First Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASCEND</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Hello, GitHub!</h1>
-    <p>This is my first website.</p>
+<!-- ============ LANDING ============ -->
+<section id="screen-landing" class="screen active">
+  <div class="landing-bg">
+    <div class="glow-orb orb1"></div>
+    <div class="glow-orb orb2"></div>
+    <div class="glow-orb orb3"></div>
+  </div>
+  <div class="landing-content">
+    <h1 class="ascend-title">ASCEND</h1>
+    <p class="ascend-subtitle">Banoge apne aap ka sabse majboot aur samajhdar version.</p>
+    <button id="begin-btn" class="btn-glow">Begin Your Journey</button>
+  </div>
+</section>
 
+<!-- ============ ONBOARDING ============ -->
+<section id="screen-onboarding" class="screen">
+  <div class="onboard-card">
+    <h2>Apna profile banao</h2>
+    <form id="onboard-form" novalidate>
+      <label>Naam
+        <input type="text" id="f-name" placeholder="Akash">
+      </label>
+      <label>Email
+        <input type="email" id="f-email" placeholder="akash@example.com">
+      </label>
+      <label>Phone Number
+        <input type="tel" id="f-phone" placeholder="9876543210">
+      </label>
+      <label>Age
+        <input type="number" id="f-age" placeholder="22">
+      </label>
+      <label>Study Goal
+        <input type="text" id="f-studygoal" placeholder="DSA master karna">
+      </label>
+      <label>Fitness Goal
+        <input type="text" id="f-fitnessgoal" placeholder="Strength build karna">
+      </label>
+      <label>Daily Study Time (minutes)
+        <input type="number" id="f-studytime" placeholder="60">
+      </label>
+      <label>Daily Workout Time (minutes)
+        <input type="number" id="f-workouttime" placeholder="30">
+      </label>
+      <div id="onboard-error" class="error-text"></div>
+      <button type="submit" class="btn-glow">Shuru Karo</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ MAIN APP ============ -->
+<div id="app-shell" class="screen">
+  <header class="topbar">
+    <div>
+      <div class="welcome-text" id="welcome-text">Welcome back</div>
+      <div class="level-text">Level <span id="level-val">1</span> · <span id="xp-val">0</span>/<span id="xp-next">100</span> XP</div>
+    </div>
+    <div class="streak-pill">🔥 <span id="overall-streak">0</span></div>
+  </header>
+  <div class="xp-bar-track"><div class="xp-bar-fill" id="xp-bar-fill"></div></div>
+
+  <main id="main-content">
+
+    <!-- HOME -->
+    <section id="view-home" class="view active">
+      <div class="streak-cards">
+        <div class="streak-card">
+          <div class="streak-icon">📚</div>
+          <div class="streak-num" id="study-streak-val">0</div>
+          <div class="streak-label">Study Streak</div>
+        </div>
+        <div class="streak-card">
+          <div class="streak-icon">💪</div>
+          <div class="streak-num" id="fitness-streak-val">0</div>
+          <div class="streak-label">Fitness Streak</div>
+        </div>
+        <div class="streak-card">
+          <div class="streak-icon">🔥</div>
+          <div class="streak-num" id="overall-streak-val">0</div>
+          <div class="streak-label">Overall Streak</div>
+        </div>
+      </div>
+
+      <h3 class="section-title">Aaj ka Progress</h3>
+      <div class="today-grid">
+        <div class="today-item">Study <b id="today-study-progress">0/0</b></div>
+        <div class="today-item">Fitness <b id="today-fitness-progress">0/0</b></div>
+        <div class="today-item">Missions <b id="today-missions-progress">0/0</b></div>
+      </div>
+
+      <h3 class="section-title">Tumhara Safar</h3>
+      <div id="world-path" class="world-path"></div>
+    </section>
+
+    <!-- STUDY -->
+    <section id="view-study" class="view">
+      <h2 class="section-title">📚 Study</h2>
+      <div id="study-list"></div>
+    </section>
+
+    <!-- FITNESS -->
+    <section id="view-fitness" class="view">
+      <h2 class="section-title">💪 Fitness</h2>
+      <div id="fitness-list"></div>
+    </section>
+
+    <!-- MISSIONS -->
+    <section id="view-missions" class="view">
+      <h2 class="section-title">🎯 Daily Missions</h2>
+      <div id="mission-list"></div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="view-achievements" class="view">
+      <h2 class="section-title">🏆 Achievements</h2>
+      <div id="achievement-list" class="achievement-grid"></div>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="view-profile" class="view">
+      <h2 class="section-title">👤 Profile</h2>
+      <div id="profile-info" class="profile-info"></div>
+      <button id="reset-btn" class="btn-danger">♻ Reset Progress</button>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-view="home"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></button>
+    <button class="nav-btn" data-view="study"><span class="nav-icon">📚</span><span class="nav-label">Study</span></button>
+    <button class="nav-btn" data-view="fitness"><span class="nav-icon">💪</span><span class="nav-label">Fitness</span></button>
+    <button class="nav-btn" data-view="missions"><span class="nav-icon">🎯</span><span class="nav-label">Missions</span></button>
+    <button class="nav-btn" data-view="achievements"><span class="nav-icon">🏆</span><span class="nav-label">Awards</span></button>
+    <button class="nav-btn" data-view="profile"><span class="nav-icon">👤</span><span class="nav-label">Profile</span></button>
+  </nav>
+</div>
+
+<div id="toast" class="hidden"></div>
+
+<script src="app.js"></script>
 </body>
 </html>
